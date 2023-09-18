@@ -22,9 +22,11 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})%{$reset_color%}"
 
-local user_host="%{$fg[blue]%}(%B%(!.%{$fg[red]%}.%{$fg[cyan]%})%n%{$reset_color%}%{$fg[blue]%}@%B%(!.%{$fg[red]%}.%{$fg[cyan]%})%m%{$reset_color%}%{$fg[blue]%})-%{$reset_color%}"
+local user="%{$fg[cyan]%}(%B%(!.%{$fg[red]%}.%{$fg[magenta]%})%n%{$reset_color%}"
+local separator="%{$fg[cyan]%}@%{$reset_color%}"
+local host="%B%(!.%{$fg[red]%}.%{$fg[magenta]%})%m%{$reset_color%}%{$fg[cyan]%})-%{$reset_color%}"
+local current_dir="%{$fg[cyan]%}[%{$reset_color%}%B%{$fg[white]%}%~%{$reset_color%}%{$fg[cyan]%}]%{$reset_color%}"
 local user_symbol='%(!.#.$)'
-local current_dir="%B%{$fg[blue]%}%~%{$reset_color%}"
 
-PROMPT="${user_host}[${current_dir}]\$vcs_info_msg_0_
+PROMPT="${user}${separator}${host}${current_dir}\$vcs_info_msg_0_
 %B${user_symbol}%b "
